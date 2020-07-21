@@ -21,13 +21,14 @@ def balancedBrackets(string):
             symbol_list.append(letter)
 
     length = len(symbol_list)
-    i = 0
+    # i = 0
     for symbol in symbol_list:
         if symbol == "|":
-            if stack[-1] == "|" and len(stack) > 0:
-                stack.pop()
-            else:
-                stack.append(symbol)
+            if len(stack) > 0:
+                if stack[-1] == "|":
+                    stack.pop()
+                else:
+                    stack.append(symbol)
         elif symbol in keys:
             stack.append(symbol)
 
@@ -49,5 +50,5 @@ def balancedBrackets(string):
         
 
 
-print(balancedBrackets('[{]'))
+print(balancedBrackets('|[{|]'))
 print(balancedBrackets('[|{|(||)|}|]'))
